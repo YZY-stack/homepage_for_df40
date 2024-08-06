@@ -547,6 +547,42 @@ DF40_train (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040
 	<hr>
 
 
+	<table align=center width=850px>
+		<center><h1>Takeaways & Findings</h1></center>
+		<tr>
+			<td>
+				Here, we very briefly outline several key takeaways to encapsulate our contributions and conclusions:
+				<br>- 1. The dataset is pivotal in addressing the generalization problem in deepfake detection. To this end, we build a highly diverse deepfake dataset incorporating 40 distinct deepfake techniques, including the most recent ones. The visual example can be seen in the <strong>Supplementary</strong> of our paper;
+				<br>- 2. Data domain and forgery method collectively determine the final detection results (see the causal graph in our <strong>main paper</strong> for intuitive understanding);
+				<br>- 3. Many recent face-swapping methods (e.g., SimSwap) do NOT involve a blending process but generate all content directly (including the background).
+				<br>- 4. Blending is not all you need to detect deepfakes, even face-swapping forgeries.
+				<br>- 5. CLIP-large is the most powerful baseline model due to its notable ability to learn robust real-face distribution.
+				<br>- 6. The model trained on the face domain (our dataset) can also be somehow applied to the non-face domain (pure AIGC) fakes.
+				<br>- 7. There is an urgent need to develop an effective incremental learning framework aiming to produce improved results, creating "1+1>2" results when combining many different forgeries together for training.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+
+	<hr>
+
+
+	<table align=center width=850px>
+		<center><h1>Visual Examples</h1></center>
+		<tr>
+			<td>
+				We show visual examples of FS, FR, EFS, and unknown methods (including FE) from our DF40 dataset, illustrated below.
+				<center>
+					<br> <img class="round" style="width:500px; margin-top: 15; margin-bottom: 10;" src="./images/examples.png"/>
+				</center>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
 	<table align=center width=800px>
 		<center><h1>Paper and Supplementary Material</h1></center>
 		<tr>
