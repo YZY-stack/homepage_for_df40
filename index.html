@@ -116,7 +116,7 @@
 	}
 
 	pre {
-        font-size: 16px; /* Adjust this value to change the font size */
+        font-size: 14px; /* Adjust this value to change the font size */
         font-family: Consolas, "Courier New", monospace; /* This font family is similar to the one used in VSCode */
         background-color: #ffffff; /* This is the background color of VSCode's dark theme */
         color: #0f0f0f; /* This is the font color of VSCode's dark theme */
@@ -242,7 +242,7 @@
 		<table align=center width=850px>
 			<tr>
 				<td>	
-				</a> Is it possible to detect the various types of AI-generated faces (e.g., face-swapping, talking-head, AIGC, etcs)? This work proposes a comprehensive dataset called <strong>DF40</strong>, which comprises <strong>40 distinct synthesis techniques</strong>, including <i>10 face-swapping (FS), 12 face-reenactment (FR), 10 entire face synthesis (EFS), and 5 face editing (FE) methods</i>. We then conduct more than 2,000+ evaluations on a standard benchmark, leading to several new findings with insightful analysis. </a>
+				</a> <span style="color:rgba(0, 81, 255, 0.852)"><strong>Is it possible to detect the various types of AI-generated faces (e.g., face-swapping, talking-head, AIGC, etcs)?</strong></span> This work proposes a comprehensive dataset called <strong>DF40</strong>, which comprises <strong>40 distinct synthesis techniques</strong>, including <i>10 face-swapping (FS), 12 face-reenactment (FR), 10 entire face synthesis (EFS), and 5 face editing (FE) methods</i>. We then conduct more than 2,000+ evaluations on a standard benchmark, leading to several new findings with insightful analysis. </a>
 				</td>
 			</tr>
 		</table>
@@ -302,10 +302,10 @@
 						 <ul>- <strong>Folder structure:</strong> See the illustration below.
 <pre>
 <code>
-DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EjvgmzO22ElGnw-jEFRmoEUBLe0lchZLtafg5MDLeWuf3A?e=qXsQEA">download-all</a>, <strong>~93G</strong>)
+DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EjvgmzO22ElGnw-jEFRmoEUBLe0lchZLtafg5MDLeWuf3A?e=qXsQEA"><strong>download-all</strong></a>, <strong>~93G</strong>)
 │
 ├── known
-│   ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+│   ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I"><strong>download FS-only</strong></a>, <strong>~19.2G</strong>)
 │   │   ├── FSGAN
 │   │   │   ├── ff
 │   │   │   └── cdf
@@ -333,7 +333,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   │   ├── FaceDancer
 │   │   │   ├── ff
 │   │   │   └── cdf
-│   ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+│   ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo"><strong>download FR-only</strong></a>, <strong>~19.3G</strong>)
 │   │   ├── FOMM
 │   │   │   ├── ff
 │   │   │   └── cdf
@@ -370,7 +370,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   │   ├── HeyGen
 │   │   │   ├── ff
 │   │   │   └── cdf
-│   └── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+│   └── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><strong>download EFS-only</strong></a>, <strong>~44.5G</strong>)
 │       ├── VQGAN
 │       │   ├── ff
 │       │   └── cdf
@@ -402,7 +402,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │           ├── ff
 │           └── cdf
 │
-└── unknown (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download unknown-all</a>, <strong>~10G</strong>)
+└── unknown (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><strong>download unknown-all</strong></a>, <strong>~10G</strong>)
     ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span>
     │   └── DeepFaceLab
     │       ├── fake
@@ -442,7 +442,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 						 <ul>- <strong>Folder structure:</strong> See the illustration below.
 <pre>
 <code>
-├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I"><strong>download FS-only</strong></a>, <strong>~19.2G</strong>)
 │   ├── FSGAN
 │   ├── FaceSwap
 │   ├── SimSwap
@@ -452,7 +452,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   ├── MobileSwap
 │   ├── e4s
 │   └── FaceDancer
-├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo"><strong>download FR-only</strong></a>, <strong>~19.3G</strong>)
 │   ├── FOMM
 │   ├── FS_vid2vid
 │   ├── Wav2Lip
@@ -465,7 +465,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   ├── SadTalker
 │   ├── MCNet
 │   └── HeyGen
-└── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+└── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><strong>download EFS-only</strong></a>, <strong>~44.5G</strong>)
     ├── VQGAN
     ├── StyleGAN2
     ├── StyleGAN3
