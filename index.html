@@ -1,0 +1,524 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>This is my paper title</title>
+	<meta property="og:image" content="./images/df40_intro.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="DF40: Toward Next-Generation Deepfake Detection." />
+	<meta property="og:description" content="Paper description." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">DF40: Toward Next-Generation Deepfake Detection</span>
+		<table align=center width=600px>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:19px"><a href="https://yzy-stack.github.io/">Zhiyuan Yan</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:19px"><a href="https://sndler.github.io/">Taiping Yao</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:19px"><a href="https://chenshen.xyz/">Shen Chen</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Yandan_Zhao1/">Yandan Zhao</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Xinghe_Fu1/">Xinghe Fu</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=800px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Junwei_Zhu1/">Junwei Zhu</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Donghao_Luo1/">Donghao Luo</a></span>
+						</center>
+					</td>
+					<td align=center width=80px>
+						<center>
+							<span style="font-size:19px"><a href="https://yuanli2333.github.io/">Li Yuan</a></span>
+						</center>
+					</td>
+					<td align=center width=130px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Chengjie_Wang1/">Chengjie Wang</a></span>
+						</center>
+					</td>
+					<td align=center width=130px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Shouhong_Ding3/">Shouhong Ding</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:19px"><a href="https://openreview.net/profile?id=~Yunsheng_Wu1/">Yunsheng Wu</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=250px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:24px"><a href='https://arxiv.org/abs/2406.13495'>[Paper]</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:24px"><a href='https://github.com/YZY-stack/DF40?tab=readme-ov-file'>[GitHub]</a></span><br>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:500px" src="./images/df40_intro.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td>	
+				</a> Is it possible to detect the various types of AI-generated faces (e.g., face-swapping, talking-head, AIGC, etcs)? This work proposes a comprehensive dataset called <strong>DF40</strong>, which comprises <strong>40 distinct synthesis techniques</strong>, including <i>10 face-swapping (FS), 12 face-reenactment (FR), 10 entire face synthesis (EFS), and 5 face editing (FE) methods</i>. We then conduct more than 2,000+ evaluations on a standard benchmark, leading to several new findings with insightful analysis. </a>
+				</td>
+			</tr>
+		</table>
+	</center>
+
+	<hr>
+
+	<table align=center width=850px>
+		<center><h1>Why doing this? (motivation)</h1></center>
+		<tr>
+			<td>
+				Predominantly, existing deepfake detection works identify top-notch detection algorithms and models by adhering to the common practice: training detectors on one specific dataset (e.g., FF++) and testing them on other prevalent deepfake datasets.
+				This protocol is often regarded as a "golden compass" for navigating SoTA detectors.
+					But can these stand-out "winners" be truly applied to tackle the myriad of realistic and diverse deepfakes lurking in the real world?
+					If not, what underlying factors contribute to this gap?
+					In this work, we found the <strong>dataset</strong> (both train and test) can be the "primary culprit" due to the following:
+					<br>(1) <i>forgery diversity</i>: Deepfake techniques are commonly referred to as both face forgery (face-swapping and face-reenactment) and entire image synthesis (AIGC, especially face). Most existing datasets only contain partial types of them, with limited forgery methods implemented (e.g., 2 swapping and 2 reenactment methods in FF++);
+					<br>(2) <i>forgery realism</i>: The dominated training dataset, such as FF++, contains out-of-date forgery techniques from the past four years. "Honing skills" on these forgeries makes it difficult to guarantee effective detection generalization toward nowadays' SoTA deepfakes;
+					<br>(3) <i>evaluation protocol</i>: Most detection works perform evaluations on one type, e.g., face-swapping types only, which hinders the development of universal deepfake detectors.
+					<br>To address this dilemma, we construct a highly diverse and large-scale deepfake detection dataset called <strong>DF40</strong>,  which comprises <strong>40</strong> distinct deepfake techniques with <strong>realism</strong>, <strong>diversity</strong>, and <strong>comprehensivity</strong>.
+					We also open up several valuable yet previously underexplored research questions to inspire future works.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+	<center><h1>Why using DF40? (highlights)</h1></center>
+	<table align=center width=850px>
+		<center>
+			<tr>
+				<td>
+					<br> - <strong>Realism and diversity</strong>: DF40 contains the latest and most realistic synthesis techniques from various types such as <a href="https://www.heygen.com/">HeyGen</a> (FR), <a href="https://github.com/iperov/DeepFaceLab">DeepFaceLab</a> (FS), <a href="https://www.midjourney-v6.com/">MidJourney-v6</a> (EFS), <a href="https://ziqihuangg.github.io/projects/collaborative-diffusion.html/">Collaborative-Diffusion</a> (FE), etc.
+					<br> - <strong>Multiple scenarios</strong>: DF40 contains 31 known/white-box synthesis methods (both the real data and fake methods are known) and 9 unknown/black-box methods (one of the real data and fake methods is unknown).
+					<br> - <strong>Aligned data domain</strong>: the proposed 31 known/white-box methods are applied to the real data from the widely used <a href="https://github.com/ondyari/FaceForensics/">FF++</a> and <a href="https://github.com/yuezunli/celeb-deepfakeforensics/">Celeb-DF</a> datasets, meaning our generated fakes and their original fakes are from the same data domain.
+					<br> - <strong>Comprehensive benchmarking</strong>: Our <a href="https://github.com/YZY-stack/DF40?tab=readme-ov-file">benchmark</a> conduct more than 2,000+ evaluations with 4 standard evaluation protocols, leading to several new findings with insightful analysis.
+				</td>
+			</tr>
+		</center>
+	</table>
+	<center>
+		<img src="./images/df40_intro.png" alt="Image description" width="300" height="200">
+	</center>
+	<hr>
+
+
+	<center><h1>Download Link</h1></center>
+	<table align=center width=850px>
+		<center>
+			<tr>
+				<td>
+					<li>
+						<strong>Real Data</strong>:
+						 <ul>- <strong>For "known" methods:</strong> Each "known" method includes fake data from two domains: FaceForensics++ (ff) and Celeb-DF (cdf). To obtain the <strong>real data</strong> for both training and testing purposes, please use the following links: <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">FaceForensics++ real data</a> and <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">Celeb-DF real data</a>.</ul>
+						 <ul>- <strong>For "unknown" methods:</strong> The real data is already included within the folder, so there is NO additional download link required for the real data of the unknown methods.</ul>
+					</li>
+					<li> <strong>DF40-test (after preprocessing)</strong>:
+						 <ul>- <strong>Description:</strong> We provide the download <a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EgvUQBUQQS5LjXF9afK8MG8BT_F_2ea9TKIC64pD_Nfzcg?e=3m6SCc">Link</a> of the <i>whole DF40 testing data</i> after preprocessing (frame extraction and face cropping), including <strong>fake images only</strong>.</ul>
+						 <ul>- <strong>Size:</strong> The whole size is <strong>~93G</strong>. Please refer to the below illustration and our <a href="https://github.com/YZY-stack/DF40?tab=readme-ov-file">GitHub</a> for the size of each specific method.	</ul>
+						 <ul>- <strong>Folder structure:</strong> See the illustration below.
+<pre>
+<code>
+DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EjvgmzO22ElGnw-jEFRmoEUBLe0lchZLtafg5MDLeWuf3A?e=qXsQEA">download-all</a>, <strong>~93G</strong>)
+│
+├── known
+│   ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+│   │   ├── FSGAN
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── FaceSwap
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── SimSwap
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── InSwapper
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── BlendFace
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── UniFace
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── MobileSwap
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── e4s
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── FaceDancer
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+│   │   ├── FOMM
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── FS_vid2vid
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── Wav2Lip
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── MRAA
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── OneShot
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── PIRender
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── TPSM
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── LIA
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── DaGAN
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── SadTalker
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── MCNet
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   │   ├── HeyGen
+│   │   │   ├── ff
+│   │   │   └── cdf
+│   └── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+│       ├── VQGAN
+│       │   ├── ff
+│       │   └── cdf
+│       ├── StyleGAN2
+│       │   ├── ff
+│       │   └── cdf
+│       ├── StyleGAN3
+│       │   ├── ff
+│       │   └── cdf
+│       ├── StyleGAN-XL
+│       │   ├── ff
+│       │   └── cdf
+│       ├── SD-2.1
+│       │   ├── ff
+│       │   └── cdf
+│       ├── DDPM
+│       │   ├── ff
+│       │   └── cdf
+│       ├── RDDM
+│       │   ├── ff
+│       │   └── cdf
+│       ├── PixArt
+│       │   ├── ff
+│       │   └── cdf
+│       ├── DiT-XL/2
+│       │   ├── ff
+│       │   └── cdf
+│       └── SiT-XL/2
+│           ├── ff
+│           └── cdf
+│
+└── unknown (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download unknown-all</a>, <strong>~10G</strong>)
+    ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span>
+    │   └── DeepFaceLab
+    │       ├── fake
+    │       └── real
+    ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span>
+    │   └── HeyGen
+    │       ├── fake
+    │       └── real
+    ├── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span>
+    │   ├── MidJourney
+    │   │   ├── fake
+    │   │   └── real
+    │   └── whichfaceisreal
+    │       ├── fake
+    │       └── real
+    └── <span style="color:rgba(199, 75, 191, 0.822)"><strong>FE</strong></span>
+        ├── starGAN
+        │   ├── fake
+        │   └── real
+        ├── starGAN-v2
+        │   ├── fake
+        │   └── real
+        ├── StyleCLIP
+        │   ├── fake
+        │   └── real
+        ├── e4e
+        │   ├── fake
+        │   └── real
+        └── CollabDiff
+            ├── fake
+            └── real
+</code>
+</pre> <strong><i>Note: methods in the "known" folder contain fake data under the "FaceForensics++" (ff) and "Celeb-DF" (cdf) data domains. "unknown" means other unknown data domains.</i></strong></ul>
+					<li> <strong>DF40-train (after preprocessing)</strong>:
+						 <ul>- <strong>Description:</strong> Similar to the DF40-test, we provide the processed fake images for training in this <a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EqPx3qOJohZKqCKyXZc4F0gBrJshOn9g50w7I2OsmDWEkg?e=2eijto">link</a>. Please note that the training set ONLY includes the "known" methods and utilizes the FaceForensics++ (ff) domain for training. The Celeb-DF (cdf) domain is not used for training purposes but for testing only. </ul>
+						 <ul>- <strong>Size:</strong> The whole size is ~50G.	</ul>
+						 <ul>- <strong>Folder structure:</strong> See the illustration below.
+<pre>
+<code>
+├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+│   ├── FSGAN
+│   ├── FaceSwap
+│   ├── SimSwap
+│   ├── InSwapper
+│   ├── BlendFace
+│   ├── UniFace
+│   ├── MobileSwap
+│   ├── e4s
+│   └── FaceDancer
+├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+│   ├── FOMM
+│   ├── FS_vid2vid
+│   ├── Wav2Lip
+│   ├── MRAA
+│   ├── OneShot
+│   ├── PIRender
+│   ├── TPSM
+│   ├── LIA
+│   ├── DaGAN
+│   ├── SadTalker
+│   ├── MCNet
+│   └── HeyGen
+└── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+    ├── VQGAN
+    ├── StyleGAN2
+    ├── StyleGAN3
+    ├── StyleGAN-XL
+    ├── SD-2.1
+    ├── DDPM
+    ├── RDDM
+    ├── PixArt
+    ├── DiT-XL/2
+    └── SiT-XL/2
+</code>
+</pre>
+				</td>
+			</tr>
+		</center>
+	</table>
+
+	<hr>
+
+
+	<table align=center width=450px>
+		<center><h1>Paper and Supplementary Material</h1></center>
+		<tr>
+			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./images/df40_intro.png"/></a></td>
+			<td><span style="font-size:14pt">Zhiyuan Yan, Taiping Yao, Shen Chen, Yandan Zhao, Xinghe Fu, Junwei Zhu, Donghao Luo, Li Yuan, Chengjie Wang, Shouhong Ding, Yunsheng Wu.<br>
+				<b>DF40: Toward Next-Generation Deepfake Detection.</b><br>
+				<!-- In Conference, 20XX.<br> -->
+				(hosted on <a href="https://arxiv.org/abs/2406.13495">ArXiv</a>)<br>
+				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
+				<span style="font-size:4pt"><a href=""><br></a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table align=center width=600px>
+		<tr>
+			<td><span style="font-size:14pt"><center>
+				<a href="./resources/bibtex.txt">[Bibtex]</a>
+			</center></td>
+		</tr>
+	</table>
+
+	<hr>
+	<br>
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center><h1>Acknowledgements</h1></center>
+					This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found <a href="https://github.com/richzhang/webpage-template">here</a>.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+<br>
+</body>
+</html>
+
