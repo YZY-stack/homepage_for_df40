@@ -10,12 +10,12 @@
 		margin-right: auto;
 		width: 1100px;
 	}
-	
+
 	h1 {
 		font-size:32px;
 		font-weight:300;
 	}
-	
+
 	.disclaimerbox {
 		background-color: #eee;		
 		border: 1px solid #eeeeee;
@@ -32,7 +32,7 @@
 		-moz-border-radius: 10px ;
 		-webkit-border-radius: 10px ;
 	}
-	
+
 	img.header-img {
 		height: 140px;
 		border: 1px solid black;
@@ -40,14 +40,14 @@
 		-moz-border-radius: 10px ;
 		-webkit-border-radius: 10px ;
 	}
-	
+
 	img.rounded {
 		border: 1px solid #eeeeee;
 		border-radius: 10px ;
 		-moz-border-radius: 10px ;
 		-webkit-border-radius: 10px ;
 	}
-	
+
 	a:link,a:visited
 	{
 		color: #1367a7;
@@ -56,13 +56,13 @@
 	a:hover {
 		color: #208799;
 	}
-	
+
 	td.dl-link {
 		height: 160px;
 		text-align: center;
 		font-size: 22px;
 	}
-	
+
 	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
 		box-shadow:
 		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
@@ -101,24 +101,33 @@
 		margin-right: 30px;
 		margin-bottom: 5px;
 	}
-	
+
 	.vert-cent {
 		position: relative;
 		top: 50%;
 		transform: translateY(-50%);
 	}
-	
+
 	hr
 	{
 		border: 0;
 		height: 1px;
 		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 	}
+
+	pre {
+        font-size: 16px; /* Adjust this value to change the font size */
+        font-family: Consolas, "Courier New", monospace; /* This font family is similar to the one used in VSCode */
+        background-color: #f4f4f4ec; /* This is the background color of VSCode's dark theme */
+        color: #0f0f0f; /* This is the font color of VSCode's dark theme */
+        padding: 10px;
+        border-radius: 5px;
+    }
 </style>
 
 <html>
 <head>
-	<title>This is my paper title</title>
+	<title>DF40: Toward Next-Generation Deepfake Detection</title>
 	<meta property="og:image" content="./images/df40_intro.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
 	<meta property="og:title" content="DF40: Toward Next-Generation Deepfake Detection." />
 	<meta property="og:description" content="Paper description." />
@@ -138,7 +147,7 @@
 <body>
 	<br>
 	<center>
-		<span style="font-size:36px">DF40: Toward Next-Generation Deepfake Detection (NeurIPS'24)</span>
+		<span style="font-size:36px">DF40: Toward Next-Generation Deepfake Detection</span>
 		<table align=center width=600px>
 			<table align=center width=600px>
 				<tr>
@@ -225,7 +234,7 @@
 			<tr>
 				<td width=260px>
 					<center>
-						<img class="round" style="width:500px" src="./images/df40_intro.png"/>
+						<img class="round" style="width:700px; margin-top: 15; margin-bottom: 10;" src="./images/df40_intro.png"/>
 					</center>
 				</td>
 			</tr>
@@ -233,7 +242,7 @@
 		<table align=center width=850px>
 			<tr>
 				<td>	
-				</a> Is it possible to detect the various types of AI-generated faces (e.g., face-swapping, talking-head, AIGC, etcs)? This work proposes a comprehensive dataset called <strong>DF40</strong>, which comprises <strong>40 distinct synthesis techniques</strong>, including <i>10 face-swapping (FS), 12 face-reenactment (FR), 10 entire face synthesis (EFS), and 5 face editing (FE) methods</i>. We then conduct more than 2,000+ evaluations on a standard benchmark, leading to several new findings with insightful analysis. </a>
+				</a> <span style="color:rgba(0, 81, 255, 0.852)"><strong>Is it possible to detect the various types of AI-generated faces (e.g., face-swapping, talking-head, AIGC, etcs)?</strong></span> This work proposes a comprehensive dataset called <strong>DF40</strong>, which comprises <strong>40 distinct synthesis techniques</strong>, including <i>10 face-swapping (FS), 12 face-reenactment (FR), 10 entire face synthesis (EFS), and 5 face editing (FE) methods</i>. We then conduct more than 2,000+ evaluations on a standard benchmark, leading to several new findings with insightful analysis. </a>
 				</td>
 			</tr>
 		</table>
@@ -241,26 +250,6 @@
 
 	<hr>
 
-	<table align=center width=850px>
-		<center><h1>Why doing this? (motivation)</h1></center>
-		<tr>
-			<td>
-				Predominantly, existing deepfake detection works identify top-notch detection algorithms and models by adhering to the common practice: training detectors on one specific dataset (e.g., FF++) and testing them on other prevalent deepfake datasets.
-				This protocol is often regarded as a "golden compass" for navigating SoTA detectors.
-					But can these stand-out "winners" be truly applied to tackle the myriad of realistic and diverse deepfakes lurking in the real world?
-					If not, what underlying factors contribute to this gap?
-					In this work, we found the <strong>dataset</strong> (both train and test) can be the "primary culprit" due to the following:
-					<br>(1) <i>forgery diversity</i>: Deepfake techniques are commonly referred to as both face forgery (face-swapping and face-reenactment) and entire image synthesis (AIGC, especially face). Most existing datasets only contain partial types of them, with limited forgery methods implemented (e.g., 2 swapping and 2 reenactment methods in FF++);
-					<br>(2) <i>forgery realism</i>: The dominated training dataset, such as FF++, contains out-of-date forgery techniques from the past four years. "Honing skills" on these forgeries makes it difficult to guarantee effective detection generalization toward nowadays' SoTA deepfakes;
-					<br>(3) <i>evaluation protocol</i>: Most detection works perform evaluations on one type, e.g., face-swapping types only, which hinders the development of universal deepfake detectors.
-					<br>To address this dilemma, we construct a highly diverse and large-scale deepfake detection dataset called <strong>DF40</strong>,  which comprises <strong>40</strong> distinct deepfake techniques with <strong>realism</strong>, <strong>diversity</strong>, and <strong>comprehensivity</strong>.
-					We also open up several valuable yet previously underexplored research questions to inspire future works.
-			</td>
-		</tr>
-	</table>
-	<br>
-
-	<hr>
 	<center><h1>Why using DF40? (highlights)</h1></center>
 	<table align=center width=850px>
 		<center>
@@ -274,32 +263,50 @@
 			</tr>
 		</center>
 	</table>
+
 	<center>
-		<img src="./images/df40_intro.png" alt="Image description" width="300" height="200">
+		<img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/table.png"/>
 	</center>
 	<hr>
 
 
-	<center><h1>Download Link</h1></center>
+	<table align=center width=850px>
+		<center><h1>Why doing this? (motivation)</h1></center>
+		<tr>
+			<td>
+				In this work, we aim to address the following challenges in the current deepfake detection research (especially the datasets):
+					<br><strong>(1) Forgery Diversity</strong>: Deepfake techniques are commonly referred to as both face forgery (face-swapping and face-reenactment) and entire image synthesis (AIGC, especially face). Most existing datasets only contain partial types of them, with limited forgery methods implemented (e.g., 2 swapping and 2 reenactment methods in FF++);
+					<br><strong>(2) Forgery Realism</strong>: The dominated training dataset, such as FF++, contains out-of-date forgery techniques from the past four years. "Honing skills" on these forgeries makes it difficult to guarantee effective detection generalization toward nowadays' SoTA deepfakes;
+					<br><strong>(3) Evaluation Protocol</strong>: Most detection works perform evaluations on one type, e.g., face-swapping types only, which hinders the development of universal deepfake detectors.
+					<br>To address this dilemma, we construct a highly diverse and large-scale deepfake detection dataset called <strong>DF40</strong>,  which comprises <strong>40</strong> distinct deepfake techniques with <strong>realism</strong>, <strong>diversity</strong>, and <strong>comprehensivity</strong>.
+					We also open up several valuable yet previously underexplored research questions to inspire future works.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+	<center><h1>Dataset Details & Download</h1></center>
 	<table align=center width=850px>
 		<center>
 			<tr>
 				<td>
 					<li>
 						<strong>Real Data</strong>:
-						 <ul>- <strong>For "known" methods:</strong> Each "known" method includes fake data from two domains: FaceForensics++ (FF) and Celeb-DF (CDF). To obtain the <strong>real data</strong> for both training and testing purposes, please use the following links: <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">FaceForensics++ real data</a> and <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">Celeb-DF real data</a>.</ul>
+						 <ul>- <strong>For "known" methods:</strong> Each "known" method includes fake data from two domains: FaceForensics++ (ff) and Celeb-DF (cdf). To obtain the <strong>real data</strong> for both training and testing purposes, please use the following links: <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">FaceForensics++ real data</a> and <a href="https://cuhko365-my.sharepoint.com/:u:/g/personal/222041040_link_cuhk_edu_cn/EVitwBK9x1NAhffZM2jVfuAB3pBetPsvEyp47Z0K5AbqqA?e=HkP2B6">Celeb-DF real data</a>.</ul>
 						 <ul>- <strong>For "unknown" methods:</strong> The real data is already included within the folder, so there is NO additional download link required for the real data of the unknown methods.</ul>
 					</li>
 					<li> <strong>DF40-test (after preprocessing)</strong>:
 						 <ul>- <strong>Description:</strong> We provide the download <a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EgvUQBUQQS5LjXF9afK8MG8BT_F_2ea9TKIC64pD_Nfzcg?e=3m6SCc">Link</a> of the <i>whole DF40 testing data</i> after preprocessing (frame extraction and face cropping), including <strong>fake images only</strong>.</ul>
 						 <ul>- <strong>Size:</strong> The whole size is <strong>~93G</strong>. Please refer to the below illustration and our <a href="https://github.com/YZY-stack/DF40?tab=readme-ov-file">GitHub</a> for the size of each specific method.	</ul>
-						 <ul>- <strong>Folder structure:</strong> See the illustration below.
+						 <ul>- <strong>Folder structure:</strong> See the illustration below. <span style="color:rgb(255, 0, 0)"><strong>Red color</strong></span> is the hyper-link to download data.
 <pre>
 <code>
-DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EjvgmzO22ElGnw-jEFRmoEUBLe0lchZLtafg5MDLeWuf3A?e=qXsQEA">download-all</a>, <strong>~93G</strong>)
+DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EjvgmzO22ElGnw-jEFRmoEUBLe0lchZLtafg5MDLeWuf3A?e=qXsQEA"><span style="color:rgb(255, 0, 0)"><strong>download DF40-test-all</strong></span></a>, <strong>~93G</strong>)
 │
 ├── known
-│   ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+│   ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I"><span style="color:rgb(255, 0, 0)"><strong>download FS-only</strong></span></a>, <strong>~19.2G</strong>)
 │   │   ├── FSGAN
 │   │   │   ├── ff
 │   │   │   └── cdf
@@ -327,7 +334,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   │   ├── FaceDancer
 │   │   │   ├── ff
 │   │   │   └── cdf
-│   ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+│   ├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo"><span style="color:rgb(255, 0, 0)"><strong>download FR-only</strong></span></a>, <strong>~19.3G</strong>)
 │   │   ├── FOMM
 │   │   │   ├── ff
 │   │   │   └── cdf
@@ -364,7 +371,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   │   ├── HeyGen
 │   │   │   ├── ff
 │   │   │   └── cdf
-│   └── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+│   └── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><span style="color:rgb(255, 0, 0)"><strong>download EFS-only</strong></span></a>, <strong>~44.5G</strong>)
 │       ├── VQGAN
 │       │   ├── ff
 │       │   └── cdf
@@ -396,7 +403,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │           ├── ff
 │           └── cdf
 │
-└── unknown (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download unknown-all</a>, <strong>~10G</strong>)
+└── unknown (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><span style="color:rgb(255, 0, 0)"><strong>download unknown-all</strong></span></a>, <strong>~10G</strong>)
     ├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span>
     │   └── DeepFaceLab
     │       ├── fake
@@ -432,11 +439,13 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 </pre> <strong><i>Note: methods in the "known" folder contain fake data under the "FaceForensics++" (ff) and "Celeb-DF" (cdf) data domains. "unknown" means other unknown data domains.</i></strong></ul>
 					<li> <strong>DF40-train (after preprocessing)</strong>:
 						 <ul>- <strong>Description:</strong> Similar to the DF40-test, we provide the processed fake images for training in this <a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EqPx3qOJohZKqCKyXZc4F0gBrJshOn9g50w7I2OsmDWEkg?e=2eijto">link</a>. Please note that the training set ONLY includes the "known" methods and utilizes the FaceForensics++ (ff) domain for training. The Celeb-DF (cdf) domain is not used for training purposes but for testing only. </ul>
-						 <ul>- <strong>Size:</strong> The whole size is ~50G.	</ul>
-						 <ul>- <strong>Folder structure:</strong> See the illustration below.
+						 <ul>- <strong>Size:</strong> The whole size is ~50G.	</ul> 
+						 <ul>- <strong>Folder structure:</strong> See the illustration below. <span style="color:rgb(255, 0, 0)"><strong>Red color</strong></span> is the hyper-link to download data.
 <pre>
 <code>
-├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I">download FS-only</a>, <strong>~19.2G</strong>)
+DF40_train (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EqPx3qOJohZKqCKyXZc4F0gBrJshOn9g50w7I2OsmDWEkg?e=B4ovI8"><span style="color:rgb(255, 0, 0)"><strong>download DF40-train-all</strong></span></a>, <strong>~68.3G</strong>)
+│
+├── <span style="color:rgba(0, 81, 255, 0.852)"><strong>FS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/Eglun5-oUNVDlmjL_ksEnmABUCiaf7Oigh2Y_b3hfFCwgg?e=9VWZ8I"><span style="color:rgb(255, 0, 0)"><strong>download FS-only</strong></span></a>, <strong>~14.9G</strong>)
 │   ├── FSGAN
 │   ├── FaceSwap
 │   ├── SimSwap
@@ -446,7 +455,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   ├── MobileSwap
 │   ├── e4s
 │   └── FaceDancer
-├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo">download FR-only</a>, <strong>~19.3G</strong>)
+├── <span style="color:rgba(255, 174, 0, 0.87)"><strong>FR</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EiUb1ypn8KhHq4OM11i8-OwBrFSLFBLwpPbN1_Rp2rawgQ?e=B9LdKo"><span style="color:rgb(255, 0, 0)"><strong>download FR-only</strong></span></a>, <strong>~20.9G</strong>)
 │   ├── FOMM
 │   ├── FS_vid2vid
 │   ├── Wav2Lip
@@ -459,7 +468,7 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 │   ├── SadTalker
 │   ├── MCNet
 │   └── HeyGen
-└── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl">download EFS-only</a>, <strong>~44.5G</strong>)
+└── <span style="color:rgba(11, 128, 0, 0.881)"><strong>EFS</strong></span> (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_link_cuhk_edu_cn/EkUy9mTzIQFFujSBZAClDiIBnsrnXbCBKL5f6HybkxwR8Q?e=4wFbxl"><span style="color:rgb(255, 0, 0)"><strong>download EFS-only</strong></span></a>, <strong>~32.5G</strong>)
     ├── VQGAN
     ├── StyleGAN2
     ├── StyleGAN3
@@ -480,18 +489,111 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 	<hr>
 
 
-	<table align=center width=450px>
+	<table align=center width=850px>
+		<center><h1>Main Results</h1></center>
+		<tr>
+			<td>
+					<br> We conduct main evaluations using four types of protocols, including Cross-forgery evaluation (<strong>Protocol-1</strong>), Cross-domain evaluation (<strong>Protocol-2</strong>), Toward unknown forgery and domain evaluation (<strong>Protocol-3</strong>), and One-Verse-All (OvA) evaluation (<strong>Protocol-4</strong>).
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-1) The results of Protocol-1:</strong></span>
+					<center>
+					<br> <img class="round" style="width:600px; margin-top: 15; margin-bottom: 10;" src="./images/protocol1.png"/>
+					</center>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-2) The results of Protocol-2:</strong></span>
+					<center>
+					<br> <img class="round" style="width:600px; margin-top: 15; margin-bottom: 10;" src="./images/protocol2.png"/>
+					</center>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-3) The results of Protocol-3:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/protocol3.png"/>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-4) The results of Protocol-4:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/protocol4.png"/>
+
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+
+	<table align=center width=850px>
+		<center><h1>Additional Results & Analysis</h1></center>
+		<tr>
+			<td>
+					<br> We also provide the following additional results to enlarge our evaluation scope.
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-5) Train on the DF40 "known" methods and test on "unknown" methods of DF40:</strong></span>
+					<center>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/train_on_whole_df40.png"/>
+					</center>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-6) Train on DF40 and test on non-face AIGCs (GenImage dataset):</strong></span>
+					<center>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/non_face_aigc.png"/>
+					</center>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-7) Train on previous dataset (FaceForensics++) and test on DF40:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/previous_work_on_df40.png"/>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Results-8) Train on DF40 and test on other deepfake datasets:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/test_other_dfd_data.png"/>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Analysis-1) Logits and confidence distribution analysis for both fake and real classes:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/logit_confidence.png"/>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Analysis-2) t-SNE visualizations for different models on distinct testing data:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/tsne.png"/>
+					<br> <span style="color:rgba(11, 128, 0, 0.881)"><strong>(Analysis-3) Frequency-level artifacts analysis for different synthesis methods:</strong></span>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/frequency.png"/>
+
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+
+	<table align=center width=850px>
+		<center><h1>Takeaways & Findings</h1></center>
+		<tr>
+			<td>
+				Here, we very briefly outline several key takeaways to encapsulate our contributions and conclusions:
+				<br>- 1. The dataset is pivotal in addressing the generalization problem in deepfake detection. To this end, we build a highly diverse deepfake dataset incorporating 40 distinct deepfake techniques, including the most recent ones. The visual example can be seen in the <strong>Supplementary</strong> of our paper;
+				<br>- 2. Data domain and forgery method collectively determine the final detection results (see the causal graph in our <strong>main paper</strong> for intuitive understanding);
+				<br>- 3. Many recent face-swapping methods (e.g., SimSwap) do NOT involve a blending process but generate all content directly (including the background).
+				<br>- 4. Blending is not all you need to detect deepfakes, even face-swapping forgeries.
+				<br>- 5. CLIP-large is the most powerful baseline model due to its notable ability to learn robust real-face distribution.
+				<br>- 6. The model trained on the face domain (our dataset) can also be somehow applied to the non-face domain (pure AIGC) fakes.
+				<br>- 7. There is an urgent need to develop an effective incremental learning framework aiming to produce improved results, creating "1+1>2" results when combining many different forgeries together for training.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+
+	<hr>
+
+
+	<table align=center width=850px>
+		<center><h1>Visual Examples</h1></center>
+		<tr>
+			<td>
+				We show visual examples of FS, FR, EFS, and unknown methods (including FE) from our DF40 dataset, illustrated below.
+				<center>
+					<br> <img class="round" style="width:800px; margin-top: 15; margin-bottom: 10;" src="./images/examples.png"/>
+				</center>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+	<table align=center width=800px>
 		<center><h1>Paper and Supplementary Material</h1></center>
 		<tr>
 			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./images/df40_intro.png"/></a></td>
 			<td>
 				<span style="font-size:12pt">
-					Zhiyuan Yan, Taiping Yao, Shen Chen, Yandan Zhao, Xinghe Fu, Junwei Zhu, Donghao Luo,<br>
-					Li Yuan, Chengjie Wang, Shouhong Ding, Yunsheng Wu.<br>
+					Zhiyuan Yan, Taiping Yao, Shen Chen, Yandan Zhao, Xinghe Fu, Junwei Zhu, Donghao Luo, Li Yuan, Chengjie Wang, Shouhong Ding, Yunsheng Wu.<br>
 					<b>DF40: Toward Next-Generation Deepfake Detection.</b><br>
 					<!-- In Conference, 20XX.<br> -->
 					(hosted on <a href="https://arxiv.org/abs/2406.13495">ArXiv</a>)<br>
-					<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
+					<!-- (<a href="./resources/camera-ready.png">camera ready</a>)<br> -->
 					<span style="font-size:4pt"><a href=""><br></a></span>
 				</span>
 			</td>
@@ -524,4 +626,3 @@ DF40_test (<a href="https://cuhko365-my.sharepoint.com/:f:/g/personal/222041040_
 <br>
 </body>
 </html>
-
